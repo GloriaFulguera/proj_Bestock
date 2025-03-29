@@ -1,0 +1,21 @@
+## Archivos de configuración sensibles
+appsettings.json
+appsettings.*.json
+!appsettings.example.json  # Excepto el archivo de ejemplo
+
+## Binarios y dependencias
+bin/
+obj/
+.vs/
+
+## Archivos de usuario
+*.user
+*.suo
+
+## Paquetes NuGet
+packages/
+*.nupkg
+
+## Editor/IDE
+.idea/
+.vscode/

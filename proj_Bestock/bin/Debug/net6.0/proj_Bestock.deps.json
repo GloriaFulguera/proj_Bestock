@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "proj_Bestock/1.0.0": {
+        "runtime": {
+          "proj_Bestock.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "proj_Bestock/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

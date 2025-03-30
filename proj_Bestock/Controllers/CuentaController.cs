@@ -23,20 +23,25 @@ namespace proj_Bestock.Controllers
         [HttpGet]
         public IActionResult Registrar()
         {
-            return View(); 
+            return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Registrar(Usuario model)
+        public IActionResult Registrar(Usuario model)
         {
-            bool rta=_usuarioRepo.RegistrarUsuario(model);
+            bool rta = _usuarioRepo.RegistrarUsuario(model);
             // Redirigir al login después del registro
-            return RedirectToAction("Login");
+            if (rta)
+                return RedirectToAction("Login");
+            return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(Usuario model) // Ahora recibe Usuario directamente
+        public IActionResult Login(Usuario model) // Ahora recibe Usuario directamente
         {
-            Usuario rta=_usuarioRepo.AutenticarUsuario(model.Email,model.UserPass);
-            return RedirectToAction("Index", "Home");
+            Usuario rta = _usuarioRepo.AutenticarUsuario(model.Email, model.UserPass);
+            if (rta != null)
+                return RedirectToAction("Index", "Home");
+
+            return View();
         }
 
     }

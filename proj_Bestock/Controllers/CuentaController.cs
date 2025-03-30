@@ -2,16 +2,16 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using proj_Bestock.Data.Repositories;
 using proj_Bestock.Models;
 using System.Security.Claims;
+using proj_Bestock.Services;
 
 namespace proj_Bestock.Controllers
 {
     public class CuentaController : Controller
     {
-        private readonly UsuarioRepository _usuarioRepo;
-        public CuentaController(UsuarioRepository usuarioRepo)
+        private readonly AutenticaService _usuarioRepo;
+        public CuentaController(AutenticaService usuarioRepo)
         {
             _usuarioRepo = usuarioRepo;
         }
@@ -36,7 +36,7 @@ namespace proj_Bestock.Controllers
         public async Task<IActionResult> Login(Usuario model) // Ahora recibe Usuario directamente
         {
             Usuario rta=_usuarioRepo.AutenticarUsuario(model.Email,model.UserPass);
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
         }
 
     }

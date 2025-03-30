@@ -1,11 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using proj_Bestock.Data;
 using proj_Bestock.Data.Repositories;
+using proj_Bestock.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//Repositorios
 builder.Services.AddScoped<UsuarioRepository>();
+
+//Servicios
+builder.Services.AddScoped<AutenticaService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

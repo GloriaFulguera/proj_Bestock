@@ -6,11 +6,13 @@ using proj_Bestock.Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddHttpContextAccessor();
 //Repositorios
 builder.Services.AddScoped<UsuarioRepository>();
 
 //Servicios
 builder.Services.AddScoped<AutenticaService>();
+builder.Services.AddScoped<MenuService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

@@ -10,6 +10,9 @@ namespace proj_Bestock.Models
         public string Nombre { get; set; }
         public string Email { get; set; }
         public string UserPass { get; set; }
+        public int Rol { get; set; }
+
+        public Rol RolNavigation { get; set; }
 
         public void HashPassword(string pass)
         {

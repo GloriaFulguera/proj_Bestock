@@ -1,3 +1,31 @@
 ﻿<div style="width: 100%; background-color: black; color: white; padding: 10px 0;">
     Este es el menú - Aquí irán los items de navegación
 </div>
+
+@*@using Microsoft.AspNetCore.Http
+@using proj_Bestock.Data
+@inject IHttpContextAccessor HttpContextAccessor
+@inject AppDbContext _context
+
+@{
+    // 1. Obtener el rol del usuario logueado
+    var email = HttpContextAccessor.HttpContext.User.Identity.Name;
+    var usuario = _context.Usuarios.FirstOrDefault(u => u.Email == email);
+    var rolId = usuario?.Rol ?? 0;
+
+    // 2. Obtener ítems del menú para ese rol
+    var menuItems = _context.MenuItems
+        .Where(m => m.Rol == rolId)
+        .ToList();
+}
+
+<div style="width: 100%; background-color: black; color: white; padding: 10px 0;">
+    <div style="display: flex; justify-content: space-around; align-items: center;">
+        @foreach (var item in menuItems)
+        {
+            <a href="@item.Redirect" style="color: white; text-decoration: none;">
+                @item.Nombre
+            </a>
+        }
+    </div>
+</div>*@

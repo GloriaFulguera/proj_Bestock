@@ -5,6 +5,7 @@ using Microsoft.Data.SqlClient;
 using proj_Bestock.Models;
 using System.Security.Claims;
 using proj_Bestock.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace proj_Bestock.Controllers
 {
@@ -40,7 +41,11 @@ namespace proj_Bestock.Controllers
             ViewBag.ErrorMessage = null;
             Usuario rta = _usuarioRepo.AutenticarUsuario(model.Email, model.UserPass);
             if (rta != null)
+            {
+                HttpContext.Session.SetInt32("UserId", rta.Id);
+                HttpContext.Session.SetInt32("RolId", rta.Rol);
                 return RedirectToAction("Index", "Home");
+            }
 
             ViewBag.ErrorMessage = "Credenciales incorrectas";
             return View();

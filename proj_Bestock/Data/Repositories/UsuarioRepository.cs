@@ -22,6 +22,13 @@ namespace proj_Bestock.Data.Repositories
             return _context.Usuarios.FirstOrDefault(u => u.Email == email);
         }
 
+        public IEnumerable<MenuItem> GetMenuItemsByRol(int rolId)
+        {
+            return _context.MenuItems
+                .Where(m => m.Rol == rolId)
+                .OrderBy(m => m.Nombre)
+                .ToList();
+        }
         //public UsuarioRepository(AppDbContext context)
         //{
         //    _context = context; // ¡Recibe el DbContext por inyección!

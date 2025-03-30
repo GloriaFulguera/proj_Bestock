@@ -37,10 +37,12 @@ namespace proj_Bestock.Controllers
         [HttpPost]
         public IActionResult Login(Usuario model) // Ahora recibe Usuario directamente
         {
+            ViewBag.ErrorMessage = null;
             Usuario rta = _usuarioRepo.AutenticarUsuario(model.Email, model.UserPass);
             if (rta != null)
                 return RedirectToAction("Index", "Home");
 
+            ViewBag.ErrorMessage = "Credenciales incorrectas";
             return View();
         }
 

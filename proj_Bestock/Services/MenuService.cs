@@ -15,6 +15,7 @@ namespace proj_Bestock.Services
         public  List<MenuItem> ObtenerMenu(int rolId)
         {
             return _context.MenuItems
+            //.AsNoTracking() // Mejora el rendimiento,
             .Where(m => m.Rol == rolId)
             .ToList();
             

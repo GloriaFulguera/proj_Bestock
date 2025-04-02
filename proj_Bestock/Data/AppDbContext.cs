@@ -19,7 +19,7 @@ namespace proj_Bestock.Data
             // Configuración de Rol como entidad principal
             modelBuilder.Entity<Rol>(entity =>
             {
-                entity.HasKey(r => r.Id_Rol); // Asegurar que Id_Rol es la PK
+                entity.HasKey(r => r.Id_Rol); 
                 entity.Property(r => r.Nombre).IsRequired();
             });
 

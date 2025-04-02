@@ -42,8 +42,8 @@ namespace proj_Bestock.Controllers
             Usuario rta = _usuarioRepo.AutenticarUsuario(model.Email, model.UserPass);
             if (rta != null)
             {
-                HttpContext.Session.SetInt32("UserId", rta.Id);
                 HttpContext.Session.SetInt32("RolId", rta.Rol);
+
                 return RedirectToAction("Index", "Home");
             }
 

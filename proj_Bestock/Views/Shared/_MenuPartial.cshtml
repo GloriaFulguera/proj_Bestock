@@ -1,6 +1,31 @@
-﻿<div style="width: 100%; background-color: black; color: white; padding: 10px 0;">
-    Este es el menú - Aquí irán los items de navegación
-</div>
+﻿@using System.Text.Json
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    // Obtener el menú desde sesión
+    var menuJson = HttpContextAccessor.HttpContext?.Session.GetString("MenuItems");
+    var menuItems = !string.IsNullOrEmpty(menuJson)
+        ? JsonSerializer.Deserialize<List<MenuItem>>(menuJson)
+        : new List<MenuItem>();
+}
+
+@if (menuItems.Any())
+{
+    <div style="width: 100%; background-color: black; color: white; padding: 10px 0;">
+        <ul class="nav bg-dark text-white p-2">
+            @foreach (var item in menuItems)
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="@item.Redirect">
+                        @item.Nombre
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+
 
 @*@using Microsoft.AspNetCore.Http
 @using proj_Bestock.Data

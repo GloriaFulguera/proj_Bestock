@@ -21,20 +21,20 @@ namespace proj_Bestock.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult Registrar()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Registrar(Usuario model)
-        {
-            bool rta = _usuarioRepo.RegistrarUsuario(model);
-            // Redirigir al login después del registro
-            if (rta)
-                return RedirectToAction("Login");
-            return View();
-        }
+        //[HttpGet]
+        //public IActionResult Registrar()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public IActionResult Registrar(Usuario model)
+        //{
+        //    bool rta = _usuarioRepo.RegistrarUsuario(model);
+        //    // Redirigir al login después del registro
+        //    if (rta)
+        //        return RedirectToAction("Login");
+        //    return View();
+        //}
         [HttpPost]
         public IActionResult Login(Usuario model) // Ahora recibe Usuario directamente
         {

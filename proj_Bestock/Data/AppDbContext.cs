@@ -13,6 +13,7 @@ namespace proj_Bestock.Data
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<Rol> Roles { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

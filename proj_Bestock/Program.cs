@@ -16,10 +16,11 @@ builder.Services.AddSession(options =>
 
 //Repositorios
 builder.Services.AddScoped<UsuarioRepository>();
-
+builder.Services.AddScoped<CategoriaRepository>();
 //Servicios
 builder.Services.AddScoped<AutenticaService>();
 builder.Services.AddScoped<MenuService>();
+builder.Services.AddScoped<TiendaService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

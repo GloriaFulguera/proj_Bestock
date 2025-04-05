@@ -1,3 +1,23 @@
 ﻿<div>
-    este es adm tienda
+    <br /><br />
+    <ul class="nav nav-tabs mb-4">
+        <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" href="#categorias">Categorías</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#productos">Productos</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- Pestaña Categorías -->
+        <div class="tab-pane fade show active" id="categorias">
+            @await Html.PartialAsync("_CategoriasPartial") 
+        </div>
+
+        <!-- Pestaña Productos -->
+        <div class="tab-pane fade" id="productos">
+            @await Html.PartialAsync("_ProductosPartial") 
+        </div>
+    </div>
 </div>

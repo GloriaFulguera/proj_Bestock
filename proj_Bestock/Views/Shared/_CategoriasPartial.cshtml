@@ -1,0 +1,63 @@
+﻿@*@model List<Categoria> <!-- Asume que tienes un modelo Categoria asp-controller="Categoria" asp-action="AgregarCategoria" -->*@
+
+<div class="container">
+    <!-- Formulario de agregar (centrado) -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            <form id="formAgregarCategoria" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="Nombre" placeholder="Nombre de categoría" required>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla de categorías -->
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*@foreach (var categoria in Model)
+                    {
+                        <tr>
+                            <td>@categoria.Nombre</td>
+                            <td>
+                                <a href="@Url.Action("Editar", new { id = categoria.Id })" 
+                                   class="btn btn-sm btn-warning">Editar</a>
+                                <a href="@Url.Action("Eliminar", new { id = categoria.Id })" 
+                                   class="btn btn-sm btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    }*@
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("formAgregarCategoria").addEventListener("submit", async function (e) {
+        e.preventDefault(); // Evita el envío tradicional
+
+        const formData = new FormData(this);
+
+        // Envía los datos por AJAX
+        const response = await fetch('@Url.Action("AgregarCategoria", "Categoria")', {
+            method: 'POST',
+            body: formData
+        });
+
+        //if (response.ok) {
+        //    // Recarga solo la tabla de categorías (sin perder las tabs)
+        //    $("#tabla-categorias").load('@Url.Action("ListarCategorias", "Categoria")');
+        //    this.reset(); // Limpia el formulario
+        //}
+    });
+</script>

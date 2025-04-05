@@ -5,9 +5,9 @@ namespace proj_Bestock.Services
 {
     public class TiendaService
     {
-        private readonly CategoriaRepository _categoriaRepo;
+        private readonly TiendaRepository _categoriaRepo;
 
-        public TiendaService(CategoriaRepository categoriaRepo)
+        public TiendaService(TiendaRepository categoriaRepo)
         {
             _categoriaRepo = categoriaRepo;
         }

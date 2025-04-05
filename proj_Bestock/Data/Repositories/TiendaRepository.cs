@@ -2,10 +2,10 @@
 
 namespace proj_Bestock.Data.Repositories
 {
-    public class CategoriaRepository
+    public class TiendaRepository
     {
         private readonly AppDbContext _context;
-        public CategoriaRepository(AppDbContext context)
+        public TiendaRepository(AppDbContext context)
         {
             _context = context; // Inyectado por ASP.NET Core
         }

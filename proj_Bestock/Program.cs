@@ -16,7 +16,7 @@ builder.Services.AddSession(options =>
 
 //Repositorios
 builder.Services.AddScoped<UsuarioRepository>();
-builder.Services.AddScoped<CategoriaRepository>();
+builder.Services.AddScoped<TiendaRepository>();
 //Servicios
 builder.Services.AddScoped<AutenticaService>();
 builder.Services.AddScoped<MenuService>();

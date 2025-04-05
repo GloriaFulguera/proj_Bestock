@@ -23,5 +23,16 @@ namespace proj_Bestock.Services
                 return false;
             }
         }
+        public List<Categoria> ObtenerCategorias()
+        {
+            try
+            {
+                return _categoriaRepo.Obtener();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

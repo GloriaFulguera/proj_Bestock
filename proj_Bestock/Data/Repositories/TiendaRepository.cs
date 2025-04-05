@@ -9,11 +9,11 @@ namespace proj_Bestock.Data.Repositories
         {
             _context = context; // Inyectado por ASP.NET Core
         }
-        public List<Categoria> ObtenerCategorias()
+        public List<Categoria> Obtener()
         {
-            List<Categoria> categorias= new List<Categoria>();
-            //_context.Categorias.ToList();
-            return categorias;
+            //List<Categoria> categorias= new List<Categoria>();
+            
+            return _context.Categorias.ToList();
         }
         public void Agregar(Categoria categoria)
         {

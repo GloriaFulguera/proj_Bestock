@@ -1,4 +1,5 @@
-﻿<div>
+﻿@model List<Categoria>
+<div>
     <br /><br />
     <ul class="nav nav-tabs mb-4">
         <li class="nav-item">
@@ -12,7 +13,7 @@
     <div class="tab-content">
         <!-- Pestaña Categorías -->
         <div class="tab-pane fade show active" id="categorias">
-            @await Html.PartialAsync("_CategoriasPartial") 
+            @await Html.PartialAsync("_CategoriasPartial", Model) 
         </div>
 
         <!-- Pestaña Productos -->

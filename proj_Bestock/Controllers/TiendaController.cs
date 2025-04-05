@@ -1,12 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using proj_Bestock.Services;
 
 namespace proj_Bestock.Controllers
 {
     public class TiendaController : Controller
     {
+        private readonly TiendaService _tiendaService;
+        public TiendaController(TiendaService tiendaService)
+        {
+            _tiendaService = tiendaService;
+        }
         public IActionResult Index()
         {
-            return View("AdmTienda");
+            var categorias = _tiendaService.ObtenerCategorias();
+            return View("AdmTienda",categorias);
         }
     }
 }

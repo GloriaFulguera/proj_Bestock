@@ -1,4 +1,5 @@
-﻿@*@model List<Categoria> <!-- Asume que tienes un modelo Categoria asp-controller="Categoria" asp-action="AgregarCategoria" -->*@
+﻿@model List<Categoria> 
+@*<!-- Asume que tienes un modelo Categoria asp-controller="Categoria" asp-action="AgregarCategoria" -->*@
 
 <div class="container">
     <!-- Formulario de agregar (centrado) -->
@@ -24,18 +25,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @*@foreach (var categoria in Model)
+                    @foreach (var categoria in Model)
                     {
                         <tr>
                             <td>@categoria.Nombre</td>
                             <td>
-                                <a href="@Url.Action("Editar", new { id = categoria.Id })" 
+                                <a href="@Url.Action("Editar", new { id = categoria.Id_cat })" 
                                    class="btn btn-sm btn-warning">Editar</a>
-                                <a href="@Url.Action("Eliminar", new { id = categoria.Id })" 
+                                <a href="@Url.Action("Eliminar", new { id = categoria.Id_cat })" 
                                    class="btn btn-sm btn-danger">Eliminar</a>
                             </td>
                         </tr>
-                    }*@
+                    }
                 </tbody>
             </table>
         </div>
@@ -43,6 +44,11 @@
 </div>
 
 <script>
+    // Carga las categorías cuando el tab se activa
+    document.querySelector('a[href="#categorias"]').addEventListener('shown.bs.tab', function () {
+        $("#tabla-categorias").load('@Url.Action("ListarCategorias", "Categoria")');
+    });
+
     document.getElementById("formAgregarCategoria").addEventListener("submit", async function (e) {
         e.preventDefault(); // Evita el envío tradicional
 

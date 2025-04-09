@@ -15,11 +15,6 @@ namespace proj_Bestock.Controllers
         {
             return View("_CategoriasPartial");
         }
-        [HttpPost]
-        public IActionResult AgregarCategoria(Categoria model)
-        {
-            _tiendaService.AgregarCategoria(model);
-            return View("_CategoriasPartial");
-        }
+        
     }
 }

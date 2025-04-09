@@ -76,7 +76,7 @@
 <script>
     // Carga las categorías cuando el tab se activa
     document.querySelector('a[href="#categorias"]').addEventListener('shown.bs.tab', function () {
-        $("#tabla-categorias").load('@Url.Action("ListarCategorias", "Categoria")');
+        $("#tabla-categorias").load('@Url.Action("ObtenerCategorias", "Tienda")');
     });
 
     document.getElementById("formAgregarCategoria").addEventListener("submit", async function (e) {
@@ -85,16 +85,17 @@
         const formData = new FormData(this);
 
         // Envía los datos por AJAX
-        const response = await fetch('@Url.Action("AgregarCategoria", "Categoria")', {
+        const response = await fetch('@Url.Action("AgregarCategoria", "Tienda")', {
             method: 'POST',
             body: formData
         });
 
-        //if (response.ok) {
-        //    // Recarga solo la tabla de categorías (sin perder las tabs)
-        //    $("#tabla-categorias").load('@Url.Action("ListarCategorias", "Categoria")');
-        //    this.reset(); // Limpia el formulario
-        //}
+        if (response.ok) {
+            // Recarga solo la tabla de categorías (sin perder las tabs)
+            //$("#tabla-categorias").load('@Url.Action("Index", "Tienda")');
+            location.reload(); 
+            //this.reset(); // Limpia el formulario
+        }
     });
 
     document.querySelectorAll(".btn-editar").forEach(btn => {

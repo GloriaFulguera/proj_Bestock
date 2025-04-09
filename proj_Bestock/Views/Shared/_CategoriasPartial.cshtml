@@ -1,4 +1,4 @@
-﻿@model List<Categoria> 
+﻿@model List<Categoria>
 @*<!-- Asume que tienes un modelo Categoria asp-controller="Categoria" asp-action="AgregarCategoria" -->*@
 
 <div class="container">
@@ -30,10 +30,14 @@
                         <tr>
                             <td>@categoria.Nombre</td>
                             <td>
-                                <a href="@Url.Action("Editar", new { id = categoria.Id_cat })" 
-                                   class="btn btn-sm btn-warning">Editar</a>
-                                <a href="@Url.Action("Eliminar", new { id = categoria.Id_cat })" 
-                                   class="btn btn-sm btn-danger">Eliminar</a>
+                                @*<a href="@Url.Action("Editar", new { id = categoria.Id_cat })"
+                            class="btn btn-sm btn-warning">Editar</a>*@
+                                <a href="#" class="btn btn-sm btn-warning btn-editar" data-id="@categoria.Id_cat" data-nombre="@categoria.Nombre">
+                                    Editar
+                                </a>
+
+                                <a href="@Url.Action("Eliminar", new { id = categoria.Id_cat })"
+                               class="btn btn-sm btn-danger">Eliminar</a>
                             </td>
                         </tr>
                     }
@@ -42,6 +46,32 @@
         </div>
     </div>
 </div>
+
+<!-- Modal de edición -->
+<div class="modal fade" id="modalEditarCategoria" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formEditarCategoria" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditarLabel">Editar Categoría</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="Id_cat" id="editId_cat" />
+                    <div class="mb-3">
+                        <label for="editNombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="Nombre" id="editNombre" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 
 <script>
     // Carga las categorías cuando el tab se activa
@@ -66,4 +96,34 @@
         //    this.reset(); // Limpia el formulario
         //}
     });
+
+    document.querySelectorAll(".btn-editar").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const id = this.getAttribute("data-id");
+            
+
+            document.getElementById("editId_cat").value = id;
+
+
+            const modal = new bootstrap.Modal(document.getElementById("modalEditarCategoria"));
+            modal.show();
+        });
+    });
+    document.getElementById("formEditarCategoria").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        const response = await fetch('@Url.Action("EditarCategoria", "Tienda")', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            // Cierra el modal y recarga la tabla
+            bootstrap.Modal.getInstance(document.getElementById("modalEditarCategoria")).hide();
+            location.reload(); // O recargá solo la tabla si querés
+        }
+    });
+
 </script>

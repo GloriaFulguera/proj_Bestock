@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using proj_Bestock.Models;
 using proj_Bestock.Services;
 
 namespace proj_Bestock.Controllers
@@ -14,6 +15,11 @@ namespace proj_Bestock.Controllers
         {
             var categorias = _tiendaService.ObtenerCategorias();
             return View("AdmTienda",categorias);
+        }
+        public IActionResult EditarCategoria(Categoria nueva)
+        {
+            var categorias = _tiendaService.ObtenerCategorias();
+            return View("AdmTienda", categorias);
         }
     }
 }

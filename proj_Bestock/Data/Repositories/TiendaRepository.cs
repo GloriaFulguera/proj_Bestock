@@ -20,5 +20,14 @@ namespace proj_Bestock.Data.Repositories
             _context.Add(categoria);
             _context.SaveChanges();
         } 
+        public void Editar(Categoria categoria)
+        {
+            var actual=_context.Categorias.FirstOrDefault(c=>c.Id_cat==categoria.Id_cat);
+            if (actual!=null)
+            {
+                actual.Nombre=categoria.Nombre;
+                _context.SaveChanges();
+            }
+        }
     }
 }

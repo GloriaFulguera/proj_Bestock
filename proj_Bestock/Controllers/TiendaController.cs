@@ -16,8 +16,9 @@ namespace proj_Bestock.Controllers
             var categorias = _tiendaService.ObtenerCategorias();
             return View("AdmTienda",categorias);
         }
-        public IActionResult EditarCategoria(Categoria nueva)
+        public IActionResult EditarCategoria(Categoria nuevaCat)
         {
+            _tiendaService.EditarCategoria(nuevaCat);
             var categorias = _tiendaService.ObtenerCategorias();
             return View("AdmTienda", categorias);
         }

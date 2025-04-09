@@ -34,5 +34,18 @@ namespace proj_Bestock.Services
                 return null;
             }
         }
+
+        public bool EditarCategoria(Categoria categoria)
+        {
+            try
+            {
+                _categoriaRepo.Editar(categoria);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

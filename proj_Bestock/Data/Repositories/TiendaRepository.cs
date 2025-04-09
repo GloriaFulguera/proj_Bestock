@@ -29,5 +29,14 @@ namespace proj_Bestock.Data.Repositories
                 _context.SaveChanges();
             }
         }
+        public void Eliminar(int id)
+        {
+            var categoria = _context.Categorias.Find(id);
+            if (categoria!=null)
+            {
+                _context.Categorias.Remove(categoria);
+                _context.SaveChanges();
+            }
+        }
     }
 }

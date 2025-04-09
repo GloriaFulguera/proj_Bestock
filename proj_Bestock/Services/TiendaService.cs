@@ -47,5 +47,17 @@ namespace proj_Bestock.Services
                 return false;
             }
         }
+        public bool EliminarCategoria(int id)
+        {
+            try
+            {
+                _categoriaRepo.Eliminar(id);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -16,9 +16,21 @@ namespace proj_Bestock.Controllers
             var categorias = _tiendaService.ObtenerCategorias();
             return View("AdmTienda",categorias);
         }
+        [HttpPost]
+        public IActionResult AgregarCategoria(Categoria model)
+        {
+            _tiendaService.AgregarCategoria(model);
+            var categorias = _tiendaService.ObtenerCategorias();
+            return View("AdmTienda", categorias);
+        }
         public IActionResult EditarCategoria(Categoria nuevaCat)
         {
             _tiendaService.EditarCategoria(nuevaCat);
+            var categorias = _tiendaService.ObtenerCategorias();
+            return View("AdmTienda", categorias);
+        }
+        public IActionResult Eliminar(int id) {
+            _tiendaService.EliminarCategoria(id);
             var categorias = _tiendaService.ObtenerCategorias();
             return View("AdmTienda", categorias);
         }

@@ -9,18 +9,18 @@ namespace proj_Bestock.Data.Repositories
         {
             _context = context; // Inyectado por ASP.NET Core
         }
-        public List<Categoria> Obtener()
+        public List<Categoria> ObtenerCat()
         {
             //List<Categoria> categorias= new List<Categoria>();
             
             return _context.Categorias.ToList();
         }
-        public void Agregar(Categoria categoria)
+        public void AgregarCat(Categoria categoria)
         {
             _context.Add(categoria);
             _context.SaveChanges();
         } 
-        public void Editar(Categoria categoria)
+        public void EditarCat(Categoria categoria)
         {
             var actual=_context.Categorias.FirstOrDefault(c=>c.Id_cat==categoria.Id_cat);
             if (actual!=null)
@@ -29,7 +29,7 @@ namespace proj_Bestock.Data.Repositories
                 _context.SaveChanges();
             }
         }
-        public void Eliminar(int id)
+        public void EliminarCat(int id)
         {
             var categoria = _context.Categorias.Find(id);
             if (categoria!=null)
@@ -37,6 +37,13 @@ namespace proj_Bestock.Data.Repositories
                 _context.Categorias.Remove(categoria);
                 _context.SaveChanges();
             }
+        }
+
+        public List<Producto> Obtener()
+        {
+            //List<Categoria> categorias= new List<Categoria>();
+
+            return _context.Productos.ToList();
         }
     }
 }

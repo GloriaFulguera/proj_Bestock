@@ -15,7 +15,7 @@ namespace proj_Bestock.Services
         {
             try
             {
-                _categoriaRepo.Agregar(modelo);
+                _categoriaRepo.AgregarCat(modelo);
                 return true;
             }
             catch (Exception ex)
@@ -27,7 +27,7 @@ namespace proj_Bestock.Services
         {
             try
             {
-                return _categoriaRepo.Obtener();
+                return _categoriaRepo.ObtenerCat();
             }
             catch (Exception ex)
             {
@@ -39,7 +39,7 @@ namespace proj_Bestock.Services
         {
             try
             {
-                _categoriaRepo.Editar(categoria);
+                _categoriaRepo.EditarCat(categoria);
                 return true;
             }
             catch (Exception ex)
@@ -51,7 +51,7 @@ namespace proj_Bestock.Services
         {
             try
             {
-                _categoriaRepo.Eliminar(id);
+                _categoriaRepo.EliminarCat(id);
                 return true;
             }
             catch (Exception ex)

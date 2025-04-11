@@ -5,17 +5,17 @@ namespace proj_Bestock.Services
 {
     public class TiendaService
     {
-        private readonly TiendaRepository _categoriaRepo;
+        private readonly TiendaRepository _tiendaRepo;
 
         public TiendaService(TiendaRepository categoriaRepo)
         {
-            _categoriaRepo = categoriaRepo;
+            _tiendaRepo = categoriaRepo;
         }
         public bool AgregarCategoria(Categoria modelo)
         {
             try
             {
-                _categoriaRepo.AgregarCat(modelo);
+                _tiendaRepo.AgregarCat(modelo);
                 return true;
             }
             catch (Exception ex)
@@ -27,7 +27,7 @@ namespace proj_Bestock.Services
         {
             try
             {
-                return _categoriaRepo.ObtenerCat();
+                return _tiendaRepo.ObtenerCat();
             }
             catch (Exception ex)
             {
@@ -39,7 +39,7 @@ namespace proj_Bestock.Services
         {
             try
             {
-                _categoriaRepo.EditarCat(categoria);
+                _tiendaRepo.EditarCat(categoria);
                 return true;
             }
             catch (Exception ex)
@@ -51,10 +51,34 @@ namespace proj_Bestock.Services
         {
             try
             {
-                _categoriaRepo.EliminarCat(id);
+                _tiendaRepo.EliminarCat(id);
                 return true;
             }
             catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<Producto> ObtenerProductos()
+        {
+            try
+            {
+                return _tiendaRepo.ObtenerProductos();
+            }
+            catch (Exception e)
+            {
+                return new List<Producto>();
+            }
+        }
+        public bool AgregarProducto(Producto prod)
+        {
+            try
+            {
+                _tiendaRepo.AgergarProducto(prod);
+                return true;
+            }
+            catch (Exception e)
             {
                 return false;
             }

@@ -9,11 +9,12 @@ namespace proj_Bestock.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        // Tablas (una línea por modelo):
+        // Tablas:
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Producto> Productos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +37,12 @@ namespace proj_Bestock.Data
                 .HasOne(u => u.RolNavigation)      // Si tienes esta propiedad
                 .WithMany()                        // Si Rol no tiene colección de Usuarios
                 .HasForeignKey(u => u.Rol);      // Ajusta según tu estructura
+
+            modelBuilder.Entity<Producto>()
+                .HasOne(p => p.Categoria)
+                .WithMany(c => c.Productos)
+                .HasForeignKey(p => p.Id_categoria);
+                //.OnDelete()
         }
     }
 }

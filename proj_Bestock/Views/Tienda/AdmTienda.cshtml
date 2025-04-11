@@ -1,4 +1,4 @@
-﻿@model List<Categoria>
+﻿@model proj_Bestock.Models.AdmTiendaViewModel
 <div>
     <br /><br />
     <ul class="nav nav-tabs mb-4">
@@ -13,12 +13,12 @@
     <div class="tab-content">
         <!-- Pestaña Categorías -->
         <div class="tab-pane fade show active" id="categorias">
-            @await Html.PartialAsync("_CategoriasPartial", Model) 
+            @await Html.PartialAsync("_CategoriasPartial", Model.Categorias) 
         </div>
 
         <!-- Pestaña Productos -->
         <div class="tab-pane fade" id="productos">
-            @await Html.PartialAsync("_ProductosPartial") 
+            @await Html.PartialAsync("_ProductosPartial", Model.Productos) 
         </div>
     </div>
 </div>

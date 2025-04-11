@@ -39,11 +39,14 @@ namespace proj_Bestock.Data.Repositories
             }
         }
 
-        public List<Producto> Obtener()
+        public List<Producto> ObtenerProductos()
         {
-            //List<Categoria> categorias= new List<Categoria>();
-
             return _context.Productos.ToList();
+        }
+        public void AgergarProducto(Producto prod)
+        {
+            _context.Productos.Add(prod);
+            _context.SaveChanges();
         }
     }
 }

@@ -7,5 +7,7 @@ namespace proj_Bestock.Models
         [Key]
         public int Id_cat { get; set; }
         public string Nombre { get; set; }
+
+        public ICollection<Producto> Productos { get; set; }
     }
 }

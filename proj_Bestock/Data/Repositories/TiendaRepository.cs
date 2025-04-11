@@ -43,10 +43,19 @@ namespace proj_Bestock.Data.Repositories
         {
             return _context.Productos.ToList();
         }
-        public void AgergarProducto(Producto prod)
+        public void AgregarProducto(Producto prod)
         {
             _context.Productos.Add(prod);
             _context.SaveChanges();
+        }
+        public void EliminarProducto(int id)
+        {
+            var producto= _context.Productos.Find(id);
+            if(producto!=null)
+            {
+                _context.Productos.Remove(producto);
+                _context.SaveChanges();
+            }
         }
     }
 }

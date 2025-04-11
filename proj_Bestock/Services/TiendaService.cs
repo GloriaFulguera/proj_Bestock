@@ -75,7 +75,19 @@ namespace proj_Bestock.Services
         {
             try
             {
-                _tiendaRepo.AgergarProducto(prod);
+                _tiendaRepo.AgregarProducto(prod);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public bool EliminarProducto(int id)
+        {
+            try
+            {
+                _tiendaRepo.EliminarProducto(id);
                 return true;
             }
             catch (Exception e)

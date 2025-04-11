@@ -57,5 +57,10 @@ namespace proj_Bestock.Controllers
             bool resultado=_tiendaService.AgregarProducto(model);
             return Index();
         }
+        public IActionResult EliminarProducto(int id)
+        {
+            _tiendaService.EliminarProducto(id);
+            return Index();
+        }
     }
 }

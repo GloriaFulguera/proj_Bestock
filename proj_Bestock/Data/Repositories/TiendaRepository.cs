@@ -57,5 +57,17 @@ namespace proj_Bestock.Data.Repositories
                 _context.SaveChanges();
             }
         }
+        public Producto ObtenerProducto(int id)
+        {
+            var prod = _context.Productos.Find(id);
+            if(prod!=null)
+            {
+                return prod;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

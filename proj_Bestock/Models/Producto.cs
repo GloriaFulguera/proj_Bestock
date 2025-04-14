@@ -11,5 +11,6 @@
         public int Cantidad_minima { get; set; }
 
         public Categoria Categoria { get; set; }
+        public List<Categoria> _categorias { get; set; }
     }
 }

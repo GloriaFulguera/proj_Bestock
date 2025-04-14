@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using proj_Bestock.Models;
 using proj_Bestock.Services;
 
 namespace proj_Bestock.Controllers
 {
+    [Authorize]
     public class TiendaController : Controller
     {
         private readonly TiendaService _tiendaService;
@@ -14,6 +16,11 @@ namespace proj_Bestock.Controllers
         }
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("UsuarioLogueado") != "true")
+            {
+                // Si no hay sesión, redirigimos al login
+                return RedirectToAction("Login", "Cuenta");
+            }
             var _model = new AdmTiendaViewModel
             {
                 Categorias = _tiendaService.ObtenerCategorias(),
@@ -61,6 +68,11 @@ namespace proj_Bestock.Controllers
         {
             _tiendaService.EliminarProducto(id);
             return Index();
+        }
+        public IActionResult EditarProducto(int id)
+        {
+            var producto=_tiendaService.ObtenerProducto(id);
+            return View("ProductoNuevo",producto);
         }
     }
 }

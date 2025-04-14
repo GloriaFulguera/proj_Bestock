@@ -36,17 +36,10 @@
                         </td>*@
                             <td>@producto.Categoria?.Nombre</td>
                             <td>
-                                <!-- Botón Editar con modal (similar al de categorías) -->
-                                <button class="btn btn-sm btn-warning btn-editar-producto"
-                                    data-id="@producto.Id"
-                                    data-nombre="@producto.Nombre"
-                                    data-descripcion="@producto.Descripcion"
-                                    data-precio="@producto.Precio"
-                                    data-cantidad="@producto.Cantidad"
-                                    data-categoriaid="@producto.Id_categoria">
+                                <a href="@Url.Action("EditarProducto", new { id = producto.Id })"
+                               class="btn btn-sm btn-warning btn-editar-producto">
                                     <i class="fas fa-edit"></i> Editar
-                                </button>
-
+                                </a>
                                 <!-- Botón Eliminar -->
                                 <a href="@Url.Action("EliminarProducto", new { id = producto.Id })"
                                class="btn btn-sm btn-danger"

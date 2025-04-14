@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using proj_Bestock.Services;
 using System.Security.Cryptography;
 using System.Text.Json;
 
 namespace proj_Bestock.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly MenuService _menuService;
@@ -14,6 +16,11 @@ namespace proj_Bestock.Controllers
         }
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("UsuarioLogueado") != "true")
+            {
+                // Si no hay sesión, redirigimos al login
+                return RedirectToAction("Login", "Cuenta");
+            }
             var rolId = HttpContext.Session.GetInt32("RolId");
             var items=_menuService.ObtenerMenu(rolId.Value);
             var menuJSON = JsonSerializer.Serialize(items);

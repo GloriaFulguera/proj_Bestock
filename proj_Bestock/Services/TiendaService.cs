@@ -31,7 +31,7 @@ namespace proj_Bestock.Services
             }
             catch (Exception ex)
             {
-                return null;
+                return new List<Categoria>();
             }
         }
 
@@ -93,6 +93,23 @@ namespace proj_Bestock.Services
             catch (Exception e)
             {
                 return false;
+            }
+        }
+        public Producto ObtenerProducto(int id)
+        {
+            try
+            {
+                var prod=_tiendaRepo.ObtenerProducto(id);
+                if (prod != null)
+                {
+                    return prod;
+                }
+                else
+                    throw new Exception("Prod no identificado");
+            }
+            catch(Exception e)
+            {
+                return null;
             }
         }
     }

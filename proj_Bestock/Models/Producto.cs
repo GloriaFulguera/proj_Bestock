@@ -1,7 +1,10 @@
-﻿namespace proj_Bestock.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace proj_Bestock.Models
 {
     public class Producto
     {
+        [Key]
         public int Id { get; set; }
         public int Id_categoria { get; set; }
         public string Nombre { get; set; }
@@ -11,6 +14,6 @@
         public int Cantidad_minima { get; set; }
 
         public Categoria Categoria { get; set; }
-        public List<Categoria> _categorias { get; set; }
+        //public List<Categoria> _categorias { get; set; }
     }
 }

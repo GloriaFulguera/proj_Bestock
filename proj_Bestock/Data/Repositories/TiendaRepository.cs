@@ -1,4 +1,5 @@
-﻿using proj_Bestock.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using proj_Bestock.Models;
 
 namespace proj_Bestock.Data.Repositories
 {
@@ -41,6 +42,9 @@ namespace proj_Bestock.Data.Repositories
 
         public List<Producto> ObtenerProductos()
         {
+        //    return _context.Productos
+        //.Include(p => p.Categoria) // 👈 Esto trae los datos de la categoría asociada
+        //.ToList();
             return _context.Productos.ToList();
         }
         public void AgregarProducto(Producto prod)

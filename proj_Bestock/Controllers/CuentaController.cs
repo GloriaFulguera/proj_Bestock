@@ -36,10 +36,9 @@ namespace proj_Bestock.Controllers
             {
                 HttpContext.Session.SetInt32("RolId", rta.Rol);
 
-                //
                 var claims = new List<Claim>{
-    new Claim(ClaimTypes.Name, rta.Nombre),
-    new Claim("UsuarioId", rta.Nombre.ToString())
+                   new Claim(ClaimTypes.Name, rta.Nombre),
+                    new Claim("UsuarioId", rta.Nombre.ToString())
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, "MiCookieAuth");

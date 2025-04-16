@@ -39,17 +39,6 @@ builder.Services.AddAuthentication("MiCookieAuth")
     });
 
 
-//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-//    .AddCookie(options =>
-//    {
-//        options.LoginPath = "/Cuenta/Login"; // ruta a tu login
-//        options.LogoutPath = "/Cuenta/Logout"; // si tenés logout
-//        options.AccessDeniedPath = "/Cuenta/AccessDenied"; // opcional
-//        options.ExpireTimeSpan = TimeSpan.FromMinutes(20); // igual que tu session
-//        options.SlidingExpiration = true; // renueva tiempo activo si el usuario sigue interactuando
-//    });
-
-
 //Repositorios
 builder.Services.AddScoped<UsuarioRepository>();
 builder.Services.AddScoped<TiendaRepository>();

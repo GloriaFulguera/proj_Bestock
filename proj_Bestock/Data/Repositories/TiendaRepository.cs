@@ -43,7 +43,7 @@ namespace proj_Bestock.Data.Repositories
         public List<Producto> ObtenerProductos()
         {
         //    return _context.Productos
-        //.Include(p => p.Categoria) // 👈 Esto trae los datos de la categoría asociada
+        //.Include(p => p.Categoria) // Esto trae los datos de la categoría asociada
         //.ToList();
             return _context.Productos.ToList();
         }

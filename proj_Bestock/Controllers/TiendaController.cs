@@ -9,7 +9,7 @@ namespace proj_Bestock.Controllers
     public class TiendaController : Controller
     {
         private readonly TiendaService _tiendaService;
-        //AdmTiendaViewModel _model;
+
         public TiendaController(TiendaService tiendaService)
         {
             _tiendaService = tiendaService;
@@ -32,24 +32,20 @@ namespace proj_Bestock.Controllers
         public IActionResult AgregarCategoria(Categoria model)
         {
             _tiendaService.AgregarCategoria(model);
-            //var categorias = _tiendaService.ObtenerCategorias();
             return Index();
         }
         public IActionResult EditarCategoria(Categoria nuevaCat)
         {
             _tiendaService.EditarCategoria(nuevaCat);
-            //var categorias = _tiendaService.ObtenerCategorias();
             return Index();
         }
         public IActionResult Eliminar(int id) {
             _tiendaService.EliminarCategoria(id);
-            //var categorias = _tiendaService.ObtenerCategorias();
             return Index();
         }
 
         public IActionResult CargarProductos()
         {
-            //var productos=_tiendaService.ObtenerProductos();
             return Index();
         }
 
@@ -60,7 +56,6 @@ namespace proj_Bestock.Controllers
         }
         [HttpPost]
         public IActionResult AgregarProducto(Producto model) {
-            //var categorias = _tiendaService.ObtenerCategorias();
             bool resultado=_tiendaService.AgregarProducto(model);
             return Index();
         }

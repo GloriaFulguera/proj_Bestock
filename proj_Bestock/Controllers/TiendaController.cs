@@ -67,6 +67,7 @@ namespace proj_Bestock.Controllers
         public IActionResult EditarProducto(int id)
         {
             var producto=_tiendaService.ObtenerProducto(id);
+            ViewBag.Categorias = _tiendaService.ObtenerCategorias();
             return View("ProductoNuevo",producto);
         }
     }

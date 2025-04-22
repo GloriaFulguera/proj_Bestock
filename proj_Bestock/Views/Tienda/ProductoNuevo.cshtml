@@ -11,6 +11,7 @@
                     </div>
                     <div class="card-body">
                         <form asp-action="AgregarProducto" method="post" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="Id" />
                             <!-- Categoría (Dropdown) -->
                             <div class="mb-3">
                                 <label class="form-label">Categoría</label>
@@ -45,7 +46,7 @@
                                     <label class="form-label">Precio</label>
                                     <div class="input-group">
                                         <span class="input-group-text">$</span>
-                                        <input type="number" class="form-control" asp-for="Precio" step="0.01" min="0" required>
+                                        <input type="decimal" class="form-control" asp-for="Precio" step="0.01" min="0" required>
                                     </div>
                                 </div>
                             </div>
@@ -63,11 +64,19 @@
                                 <small class="text-muted">Formatos: .jpg, .png, .jpeg</small>
                             </div>*@
 
-                            <!-- Botón -->
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-plus-circle"></i> Agregar Producto
-                                </button>
+                                    @if (Model != null)
+                                    {
+                                        <button type="submit" class="btn btn-primary">
+                                        Editar Producto
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-plus-circle"></i> Agregar Producto
+                                        </button>
+                                    }
                             </div>
                         </form>
                     </div>

@@ -13,27 +13,27 @@ namespace proj_Bestock.Data.Repositories
         public List<Categoria> ObtenerCat()
         {
             //List<Categoria> categorias= new List<Categoria>();
-            
+
             return _context.Categorias.ToList();
         }
         public void AgregarCat(Categoria categoria)
         {
             _context.Add(categoria);
             _context.SaveChanges();
-        } 
+        }
         public void EditarCat(Categoria categoria)
         {
-            var actual=_context.Categorias.FirstOrDefault(c=>c.Id_cat==categoria.Id_cat);
-            if (actual!=null)
+            var actual = _context.Categorias.FirstOrDefault(c => c.Id_cat == categoria.Id_cat);
+            if (actual != null)
             {
-                actual.Nombre=categoria.Nombre;
+                actual.Nombre = categoria.Nombre;
                 _context.SaveChanges();
             }
         }
         public void EliminarCat(int id)
         {
             var categoria = _context.Categorias.Find(id);
-            if (categoria!=null)
+            if (categoria != null)
             {
                 _context.Categorias.Remove(categoria);
                 _context.SaveChanges();
@@ -42,9 +42,9 @@ namespace proj_Bestock.Data.Repositories
 
         public List<Producto> ObtenerProductos()
         {
-        //    return _context.Productos
-        //.Include(p => p.Categoria) // Esto trae los datos de la categoría asociada
-        //.ToList();
+            //    return _context.Productos
+            //.Include(p => p.Categoria) // Esto trae los datos de la categoría asociada
+            //.ToList();
             return _context.Productos.ToList();
         }
         public void AgregarProducto(Producto prod)
@@ -54,8 +54,8 @@ namespace proj_Bestock.Data.Repositories
         }
         public void EliminarProducto(int id)
         {
-            var producto= _context.Productos.Find(id);
-            if(producto!=null)
+            var producto = _context.Productos.Find(id);
+            if (producto != null)
             {
                 _context.Productos.Remove(producto);
                 _context.SaveChanges();
@@ -64,13 +64,27 @@ namespace proj_Bestock.Data.Repositories
         public Producto ObtenerProducto(int id)
         {
             var prod = _context.Productos.Find(id);
-            if(prod!=null)
+            if (prod != null)
             {
                 return prod;
             }
             else
             {
                 return null;
+            }
+        }
+        public void EditarProducto(Producto prod)
+        {
+            var actual = _context.Productos.FirstOrDefault(x => x.Id == prod.Id);
+            if (actual != null)
+            {
+                actual.Id_categoria = prod.Id_categoria;
+                actual.Nombre = prod.Nombre;
+                actual.Descripcion = prod.Descripcion;
+                actual.Precio = prod.Precio;
+                actual.Cantidad = prod.Cantidad;
+                actual.Cantidad_minima = prod.Cantidad_minima;
+                _context.SaveChanges();
             }
         }
     }

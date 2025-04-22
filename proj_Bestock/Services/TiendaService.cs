@@ -75,7 +75,10 @@ namespace proj_Bestock.Services
         {
             try
             {
-                _tiendaRepo.AgregarProducto(prod);
+                if(prod.Id == 0)
+                    _tiendaRepo.AgregarProducto(prod);
+                else
+                    _tiendaRepo.EditarProducto(prod);
                 return true;
             }
             catch (Exception e)
